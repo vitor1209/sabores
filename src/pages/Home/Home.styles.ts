@@ -2,23 +2,39 @@ import type { SxProps } from "@mui/material";
 import { cinemaHeader } from "../../assets/index";
 
 export const HeaderImg: SxProps = {
-  backgroundImage: `linear-gradient(rgba(128,13,22,0.8), rgba(128,13,22,0.8)), url(${cinemaHeader})`,
+  backgroundImage: `linear-gradient(rgba(128, 13, 22, 0.82), rgba(128, 13, 22, 0.82)), url(${cinemaHeader})`,
   backgroundSize: "cover",
   backgroundPosition: "center",
-  color: "#f2d97a",
-  height: "100vh",
+  color: "secondary.main",
+  minHeight: "100dvh",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
   gap: 3,
   textAlign: "center",
-  px: 2,
+  px: { xs: 2.5, md: 4 },
+};
+
+export const HeroTitle: SxProps = {
+  fontFamily: "var(--font-sans)",
+  fontWeight: 700,
+  fontSize: { xs: "2.2rem", md: "3.6rem" },
+  letterSpacing: "0.01em",
+  m: 0,
+};
+
+export const HeroDescricao: SxProps = {
+  maxWidth: 700,
+  fontSize: { xs: "1rem", md: "1.125rem" },
+  lineHeight: 1.7,
+  opacity: 0.95,
+  m: 0,
 };
 
 export const AboutContainer: SxProps = {
-  width: "80%",
-  margin: "10% 10% 0% 10%",
+  width: { xs: "90%", lg: "82%" },
+  margin: { xs: "12% 5% 0", lg: "8% 9% 0" },
   alignItems: "center",
 };
 
@@ -28,33 +44,38 @@ export const AboutTxt: SxProps = {
 };
 
 export const AboutTitulo: SxProps = {
-  fontFamily: "serif",
-  fontWeight: "bold",
-  color: "#800D16",
+  fontFamily: "var(--font-sans)",
+  fontWeight: 700,
+  color: "primary.main",
 };
 
 export const AboutTxtLine: SxProps = {
-  color: "#474745",
+  color: "text.secondary",
   lineHeight: 1.7,
 };
 
 export const AboutImgContainer: SxProps = {
   overflow: "hidden",
-  borderRadius: 1,
+  borderRadius: 2,
+  border: "1px solid rgba(128, 13, 22, 0.18)",
 };
 
 export const AboutImg: SxProps = {
   width: "100%",
-  height: 320,
+  height: { xs: 260, md: 320 },
   objectFit: "cover",
 };
 
+export const SecaoSecundaria: SxProps = {
+  pb: { xs: 8, md: 10 },
+};
+
 export const FooterStack: SxProps = {
-  backgroundColor: "#800D16",
+  backgroundColor: "primary.main",
   alignItems: "center",
   textAlign: "center",
   gap: 1,
-  p: "2.5% 0%",
+  p: { xs: "9% 0", md: "3.2% 0" },
 };
 
 export const FooterIcon: SxProps = {
@@ -63,13 +84,12 @@ export const FooterIcon: SxProps = {
 };
 
 export const FooterTitle: SxProps = {
-  fontFamily: "serif",
+  fontFamily: "var(--font-sans)",
   fontSize: "1.125rem",
-  color: "#f2d97a",
+  color: "secondary.main",
 };
 
 export const FooterText: SxProps = {
   fontSize: "0.875rem",
-  color: "#f2d97a",
-  opacity: 0.6,
+  color: "rgba(241, 225, 148, 0.72)",
 };

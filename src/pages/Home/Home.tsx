@@ -1,6 +1,20 @@
 import { Box, Button, Grid, Stack, Typography } from "@mui/material";
-import { AboutContainer, AboutImg, AboutImgContainer, AboutTitulo, AboutTxt, AboutTxtLine, FooterStack, FooterText, FooterTitle, HeaderImg } from "./Home.styles";
-import { Popcorn } from "lucide-react"
+import {
+  AboutContainer,
+  AboutImg,
+  AboutImgContainer,
+  AboutTitulo,
+  AboutTxt,
+  AboutTxtLine,
+  FooterStack,
+  FooterText,
+  FooterTitle,
+  HeaderImg,
+  HeroDescricao,
+  HeroTitle,
+  SecaoSecundaria,
+} from "./Home.styles";
+import { Popcorn } from "lucide-react";
 import { filmeComida, pipoca } from "../../assets";
 import { Link } from "react-router";
 
@@ -11,9 +25,15 @@ export const Home = () => {
 
         <Stack sx={HeaderImg}>
           <Popcorn strokeWidth={1.5} />
-          <h1>Além da Pipoca</h1>
-          <p>Descubra receitas inspiradas nos seus filmes favoritos.
-            Cada filme conta uma história — e cada história tem um sabor.</p>
+
+          <Typography component="h1" sx={HeroTitle}>
+            Além da Pipoca
+          </Typography>
+
+          <Typography sx={HeroDescricao}>
+            Descubra receitas inspiradas nos seus filmes favoritos. Cada filme conta uma história e
+            cada história tem um sabor.
+          </Typography>
 
           <Button variant="contained"
             component={Link}
@@ -60,7 +80,7 @@ export const Home = () => {
 
         </Stack>
 
-        <Stack sx={{ m: "0% 0% 10% 0%" }}>
+        <Stack sx={SecaoSecundaria}>
           <Grid container spacing={6} sx={AboutContainer}>
             <Grid size={{ xs: 12, md: 6 }}>
               <Stack sx={AboutImgContainer}>

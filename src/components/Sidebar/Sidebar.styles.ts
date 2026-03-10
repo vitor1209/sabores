@@ -3,7 +3,7 @@ import type { SxProps } from "@mui/material";
 export const layout: SxProps = {
   display: "flex",
   minHeight: "100dvh",
-  backgroundColor: "#f9fafb",
+  backgroundColor: "background.default",
 };
 
 export const drawer = (largura: number): SxProps => ({
@@ -12,9 +12,9 @@ export const drawer = (largura: number): SxProps => ({
   "& .MuiDrawer-paper": {
     width: largura,
     boxSizing: "border-box",
-    backgroundColor: "#940a1a",
-    color: "#f2d97a",
-    borderRight: "1px solid rgba(242, 217, 122, 0.45)",
+    backgroundColor: "primary.main",
+    color: "secondary.main",
+    borderRight: "1px solid rgba(241, 225, 148, 0.45)",
   },
 });
 
@@ -30,14 +30,14 @@ export const logoContainer: SxProps = {
   gap: 1,
   px: 2.5,
   py: 3,
-  borderBottom: "1px solid rgba(242, 217, 122, 0.4)",
+  borderBottom: "1px solid rgba(241, 225, 148, 0.4)",
 };
 
 export const logoTexto: SxProps = {
-  fontFamily: "serif",
+  fontFamily: "var(--font-sans)",
   fontWeight: 700,
   fontSize: "1.1rem",
-  color: "#f2d97a",
+  color: "secondary.main",
 };
 
 export const categoriasContainer: SxProps = {
@@ -49,16 +49,16 @@ export const categoriasContainer: SxProps = {
     width: 8,
   },
   "&::-webkit-scrollbar-thumb": {
-    backgroundColor: "rgba(242, 217, 122, 0.35)",
+    backgroundColor: "rgba(241, 225, 148, 0.35)",
     borderRadius: 999,
   },
 };
 
 export const acordeao: SxProps = {
   backgroundColor: "transparent",
-  color: "#f2d97a",
+  color: "secondary.main",
   boxShadow: "none",
-  borderBottom: "1px solid rgba(242, 217, 122, 0.4)",
+  borderBottom: "1px solid rgba(241, 225, 148, 0.4)",
   "&::before": {
     display: "none",
   },
@@ -76,7 +76,7 @@ export const resumoAcordeao: SxProps = {
     py: 1.5,
   },
   "& .MuiAccordionSummary-expandIconWrapper": {
-    color: "#f2d97a",
+    color: "secondary.main",
   },
 };
 
@@ -89,7 +89,7 @@ export const categoriaTituloContainer: SxProps = {
 export const categoriaTitulo: SxProps = {
   fontSize: "0.92rem",
   fontWeight: 600,
-  color: "#f2d97a",
+  color: "secondary.main",
 };
 
 export const detalhesAcordeao: SxProps = {
@@ -122,11 +122,11 @@ export const botaoFilme = (ativo: boolean): SxProps => ({
   px: 1,
   py: 0.6,
   borderRadius: 1,
-  borderLeft: ativo ? "2px solid #f2d97a" : "2px solid transparent",
-  color: ativo ? "#f2d97a" : "rgba(249, 236, 178, 0.95)",
-  backgroundColor: ativo ? "rgba(242, 217, 122, 0.12)" : "transparent",
+  borderLeft: ativo ? "2px solid #F1E194" : "2px solid transparent",
+  color: ativo ? "secondary.main" : "rgba(255, 248, 224, 0.92)",
+  backgroundColor: ativo ? "rgba(241, 225, 148, 0.12)" : "transparent",
   "&:hover": {
-    backgroundColor: "rgba(242, 217, 122, 0.12)",
+    backgroundColor: "rgba(241, 225, 148, 0.12)",
   },
 });
 
@@ -134,20 +134,20 @@ export const rodape: SxProps = {
   mt: "auto",
   px: 2.5,
   py: 2.5,
-  borderTop: "1px dashed rgba(242, 217, 122, 0.65)",
+  borderTop: "1px dashed rgba(241, 225, 148, 0.65)",
 };
 
 export const botaoVoltar: SxProps = {
   width: "100%",
   justifyContent: "flex-start",
   textTransform: "none",
-  color: "#f2d97a",
+  color: "secondary.main",
   fontWeight: 700,
   borderRadius: 1,
   px: 1,
   py: 1,
   "&:hover": {
-    backgroundColor: "rgba(242, 217, 122, 0.12)",
+    backgroundColor: "rgba(241, 225, 148, 0.12)",
   },
 };
 
@@ -155,5 +155,5 @@ export const conteudoPrincipal: SxProps = {
   flexGrow: 1,
   minWidth: 0,
   p: { xs: 2, md: 3.5 },
-  backgroundColor: "#f9fafb",
+  backgroundColor: "background.default",
 };

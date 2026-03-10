@@ -5,19 +5,19 @@ export const container: SxProps = {
 	width: "100%",
 	borderRadius: 2,
 	overflow: "hidden",
-	backgroundColor: "#ffffff",
+	backgroundColor: "background.paper",
 	boxShadow: "0px 4px 20px rgba(16, 24, 40, 0.06)",
 };
 
 export const cabecalho: SxProps = {
-	backgroundColor: "#800D16",
-	color: "#f2d97a",
+	backgroundColor: "primary.main",
+	color: "secondary.main",
 	px: { xs: 3, md: 5 },
 	py: { xs: 3, md: 4 },
 };
 
 export const titulo: SxProps = {
-	fontFamily: "serif",
+	fontFamily: "var(--font-sans)",
 	fontWeight: 700,
 	fontSize: { xs: "2rem", md: "2.625rem" },
 	lineHeight: 1.1,
@@ -25,7 +25,7 @@ export const titulo: SxProps = {
 
 export const subtitulo: SxProps = {
 	mt: 1,
-	color: "rgba(242, 217, 122, 0.86)",
+	color: "rgba(241, 225, 148, 0.86)",
 	fontSize: "1rem",
 };
 
@@ -37,14 +37,14 @@ export const areaConteudo: SxProps = {
 export const abas: SxProps = {
 	minHeight: 0,
 	mb: 3,
-	borderBottom: "1px solid #E4E7EC",
+	borderBottom: "1px solid rgba(128, 13, 22, 0.2)",
 	"& .MuiTabs-flexContainer": {
 		gap: 1,
 	},
 	"& .MuiTabs-indicator": {
 		height: 3,
 		borderRadius: "4px 4px 0 0",
-		backgroundColor: "#800D16",
+		backgroundColor: "primary.main",
 	},
 };
 
@@ -53,17 +53,17 @@ export const botaoAba: SxProps = {
 	textTransform: "none",
 	fontSize: "0.95rem",
 	fontWeight: 700,
-	color: "#667085",
+	color: "text.secondary",
 	px: 2.5,
 	"&.Mui-selected": {
-		color: "#800D16",
+		color: "primary.main",
 	},
 };
 
 export const cartao: SxProps = {
-	border: "1px solid #E4E7EC",
+	border: "1px solid rgba(128, 13, 22, 0.2)",
 	borderRadius: 1.5,
-	backgroundColor: "#ffffff",
+	backgroundColor: "background.paper",
 	p: { xs: 2.5, md: 4 },
 	gap: 4,
 };
@@ -79,12 +79,12 @@ export const itemMetadado: SxProps = {
 	flexDirection: "row",
 	alignItems: "center",
 	gap: 1,
-	color: "#667085",
+	color: "text.secondary",
 };
 
 export const textoMetadado: SxProps = {
 	fontSize: "0.875rem",
-	color: "#667085",
+	color: "text.secondary",
 };
 
 export const secaoConteudo: SxProps = {
@@ -94,9 +94,9 @@ export const secaoConteudo: SxProps = {
 };
 
 export const tituloSecao: SxProps = {
-	fontFamily: "serif",
+	fontFamily: "var(--font-sans)",
 	fontWeight: 700,
-	color: "#800D16",
+	color: "primary.main",
 	fontSize: "1.4rem",
 };
 
@@ -119,7 +119,7 @@ export const marcadorIngrediente: SxProps = {
 	width: 8,
 	height: 8,
 	borderRadius: "50%",
-	backgroundColor: "#800D16",
+	backgroundColor: "primary.main",
 	mt: "10px",
 	flexShrink: 0,
 };
@@ -127,7 +127,7 @@ export const marcadorIngrediente: SxProps = {
 export const textoLista: SxProps = {
 	fontSize: "0.95rem",
 	lineHeight: 1.7,
-	color: "#344054",
+	color: "text.primary",
 };
 
 export const listaModoPreparo: SxProps = {
@@ -152,8 +152,8 @@ export const indicePasso: SxProps = {
 	display: "grid",
 	placeItems: "center",
 	flexShrink: 0,
-	backgroundColor: "#800D16",
-	color: "#f2d97a",
+	backgroundColor: "primary.main",
+	color: "secondary.main",
 	fontSize: "0.75rem",
 	fontWeight: 700,
 	mt: "2px",
@@ -162,5 +162,5 @@ export const indicePasso: SxProps = {
 export const textoSinopse: SxProps = {
 	fontSize: "1rem",
 	lineHeight: 1.8,
-	color: "#344054",
+	color: "text.primary",
 };

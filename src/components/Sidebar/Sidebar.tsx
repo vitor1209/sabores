@@ -18,7 +18,7 @@ export default function SideBar() {
           <Box sx={styles.logoContainer}>
             <Popcorn size={18} strokeWidth={1.8} />
             <Typography component="h2" sx={styles.logoTexto}>
-              Alem da Pipoca
+              Além da Pipoca
             </Typography>
           </Box>
 
