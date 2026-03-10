@@ -20,6 +20,10 @@ const routes = createBrowserRouter([
                         index: true,
                         element: <Detalhes />,
                     },
+                    {
+                        path: ":filmeSlug",
+                        element: <Detalhes />,
+                    },
                 ],
             },
         ],

@@ -1,51 +1,12 @@
 import { Box, Stack, Tab, Tabs, Typography } from "@mui/material";
 import { Clock3, Users } from "lucide-react";
-import { type SyntheticEvent, useState } from "react";
+import { type SyntheticEvent, useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { useObterFilme as obterFilme } from "../../controllers/Detalhes";
+import { filmePadrao, obterFilmePorSlug } from "../../models/ReceitasFilmes";
 import * as styles from "./Detalhes.styles";
 
 type AbaDetalhes = "receita" | "sinopse";
-
-interface ReceitaFilme {
-    tempoPreparo: string;
-    porcoes: string;
-    ingredientes: string[];
-    modoPreparo: string[];
-}
-
-interface FilmeDetalhes {
-    titulo: string;
-    nomeReceita: string;
-    sinopse: string;
-    receita: ReceitaFilme;
-}
-
-const filmeEmDestaque: FilmeDetalhes = {
-    titulo: "Ratatouille",
-    nomeReceita: "Ratatouille Tradicional do Remy",
-    sinopse:
-        "Remy, um rato com talento extraordinario para cozinhar, sonha em se tornar chef em Paris. Ao lado de Linguini, ele desafia preconceitos e prova que qualquer pessoa pode cozinhar quando existe paixao pelo que faz.",
-    receita: {
-        tempoPreparo: "1h 20min",
-        porcoes: "Serve 4 pessoas",
-        ingredientes: [
-            "1 berinjela media em rodelas finas",
-            "1 abobrinha media em rodelas finas",
-            "2 tomates italianos em rodelas finas",
-            "1 pimentao amarelo pequeno em rodelas",
-            "2 colheres de sopa de azeite de oliva",
-            "2 dentes de alho picados",
-            "1 xicara de molho de tomate rustico",
-            "Sal, pimenta-do-reino e folhas de tomilho a gosto",
-        ],
-        modoPreparo: [
-            "Preaqueca o forno a 200 graus e espalhe o molho de tomate no fundo de uma travessa redonda.",
-            "Intercale as rodelas de berinjela, abobrinha, tomate e pimentao formando uma espiral sobre o molho.",
-            "Misture o azeite, o alho, o sal, a pimenta e o tomilho; regue os legumes com essa mistura.",
-            "Cubra com papel-aluminio e asse por 35 minutos. Retire o papel e asse por mais 20 minutos para dourar levemente.",
-            "Finalize com um fio de azeite e ervas frescas. Sirva quente com pao artesanal ou arroz branco.",
-        ],
-    },
-};
 
 const indicePorAba: Record<AbaDetalhes, number> = {
     receita: 0,
@@ -54,10 +15,73 @@ const indicePorAba: Record<AbaDetalhes, number> = {
 
 export const Detalhes = () => {
     const [abaAtiva, setAbaAtiva] = useState<AbaDetalhes>("receita");
+    const [sinopsesPorSlug, setSinopsesPorSlug] = useState<Record<string, string>>({});
+    const [carregandoSinopse, setCarregandoSinopse] = useState(false);
+    const [erroSinopse, setErroSinopse] = useState<string | null>(null);
+    const { filmeSlug } = useParams();
+
+    const filmeEmDestaque = obterFilmePorSlug(filmeSlug) ?? filmePadrao;
+    const sinopseDaApi = sinopsesPorSlug[filmeEmDestaque.slug];
+    const sinopseExibida = sinopseDaApi ?? filmeEmDestaque.sinopse;
 
     const aoTrocarAba = (_event: SyntheticEvent, novoIndice: number) => {
         setAbaAtiva(novoIndice === 0 ? "receita" : "sinopse");
     };
+
+    useEffect(() => {
+        let estaAtivo = true;
+
+        if (abaAtiva !== "sinopse" || sinopseDaApi) {
+            return () => {
+                estaAtivo = false;
+            };
+        }
+
+        const carregarSinopse = async () => {
+            setErroSinopse(null);
+            setCarregandoSinopse(true);
+
+            try {
+                const resposta = await obterFilme({ name: filmeEmDestaque.titulo });
+
+                if (!estaAtivo) {
+                    return;
+                }
+
+                const filmeDaBusca =
+                    resposta.results.find(
+                        (filme) => filme.title.toLowerCase() === filmeEmDestaque.titulo.toLowerCase()
+                    ) ?? resposta.results[0];
+
+                const sinopseRetornada = filmeDaBusca?.overview?.trim();
+
+                setSinopsesPorSlug((estadoAnterior) => ({
+                    ...estadoAnterior,
+                    [filmeEmDestaque.slug]: sinopseRetornada || filmeEmDestaque.sinopse,
+                }));
+            } catch {
+                if (!estaAtivo) {
+                    return;
+                }
+
+                setErroSinopse("Nao foi possivel carregar a sinopse online. Exibindo versao local.");
+                setSinopsesPorSlug((estadoAnterior) => ({
+                    ...estadoAnterior,
+                    [filmeEmDestaque.slug]: filmeEmDestaque.sinopse,
+                }));
+            } finally {
+                if (estaAtivo) {
+                    setCarregandoSinopse(false);
+                }
+            }
+        };
+
+        void carregarSinopse();
+
+        return () => {
+            estaAtivo = false;
+        };
+    }, [abaAtiva, filmeEmDestaque.sinopse, filmeEmDestaque.slug, filmeEmDestaque.titulo, sinopseDaApi]);
 
     return (
         <Stack sx={styles.container}>
@@ -139,7 +163,13 @@ export const Detalhes = () => {
                             Sinopse
                         </Typography>
 
-                        <Typography sx={styles.textoSinopse}>{filmeEmDestaque.sinopse}</Typography>
+                        {carregandoSinopse && (
+                            <Typography sx={styles.textoMetadado}>Carregando sinopse do TMDB...</Typography>
+                        )}
+
+                        {erroSinopse && <Typography sx={styles.textoMetadado}>{erroSinopse}</Typography>}
+
+                        <Typography sx={styles.textoSinopse}>{sinopseExibida}</Typography>
                     </Stack>
                 )}
             </Box>

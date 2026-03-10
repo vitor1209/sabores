@@ -108,15 +108,27 @@ export const listaFilmes: SxProps = {
 };
 
 export const itemFilme: SxProps = {
-  px: 0.5,
-  py: 0.25,
+  px: 0,
+  py: 0,
 };
 
-export const textoFilme: SxProps = {
+export const botaoFilme = (ativo: boolean): SxProps => ({
+  width: "100%",
+  justifyContent: "flex-start",
+  textTransform: "none",
   fontSize: "0.85rem",
   lineHeight: 1.5,
-  color: "rgba(249, 236, 178, 0.95)",
-};
+  fontWeight: 500,
+  px: 1,
+  py: 0.6,
+  borderRadius: 1,
+  borderLeft: ativo ? "2px solid #f2d97a" : "2px solid transparent",
+  color: ativo ? "#f2d97a" : "rgba(249, 236, 178, 0.95)",
+  backgroundColor: ativo ? "rgba(242, 217, 122, 0.12)" : "transparent",
+  "&:hover": {
+    backgroundColor: "rgba(242, 217, 122, 0.12)",
+  },
+});
 
 export const rodape: SxProps = {
   mt: "auto",

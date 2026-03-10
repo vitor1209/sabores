@@ -1,39 +1,16 @@
 import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Drawer, Typography } from "@mui/material";
 import { ChevronDown, Heart, Popcorn, Undo2 } from "lucide-react";
-import { Link, Outlet } from "react-router";
+import { Outlet, useNavigate, useParams } from "react-router";
+import { categoriasComFilmesDetalhados, filmePadrao } from "../../models/ReceitasFilmes";
 import * as styles from "./Sidebar.styles";
-
-interface CategoriaComFilmes {
-  categoria: string;
-  filmes: string[];
-}
 
 const LARGURA_DRAWER = 280;
 
-const categoriasComFilmes: CategoriaComFilmes[] = [
-  {
-    categoria: "Romance",
-    filmes: ["Diario de uma Paixao", "Como Eu Era Antes de Voce", "La La Land"],
-  },
-  {
-    categoria: "Animacao",
-    filmes: ["Ratatouille", "A Viagem de Chihiro", "Viva: A Vida e uma Festa"],
-  },
-  {
-    categoria: "Drama",
-    filmes: ["Comer, Rezar, Amar", "Chef", "O Menu"],
-  },
-  {
-    categoria: "Comedia",
-    filmes: ["Julie & Julia", "Hancock", "As Branquelas"],
-  },
-  {
-    categoria: "Aventura",
-    filmes: ["Piratas do Caribe", "Indiana Jones", "Jumanji"],
-  },
-];
-
 export default function SideBar() {
+  const navigate = useNavigate();
+  const { filmeSlug } = useParams();
+  const slugAtivo = filmeSlug ?? filmePadrao.slug;
+
   return (
     <Box sx={styles.layout}>
       <Drawer variant="permanent" anchor="left" sx={styles.drawer(LARGURA_DRAWER)}>
@@ -46,7 +23,7 @@ export default function SideBar() {
           </Box>
 
           <Box sx={styles.categoriasContainer}>
-            {categoriasComFilmes.map(({ categoria, filmes }) => (
+            {categoriasComFilmesDetalhados.map(({ categoria, filmes }) => (
               <Accordion key={categoria} disableGutters square elevation={0} sx={styles.acordeao}>
                 <AccordionSummary expandIcon={<ChevronDown size={16} />} sx={styles.resumoAcordeao}>
                   <Box sx={styles.categoriaTituloContainer}>
@@ -58,8 +35,13 @@ export default function SideBar() {
                 <AccordionDetails sx={styles.detalhesAcordeao}>
                   <Box component="ul" sx={styles.listaFilmes}>
                     {filmes.map((filme) => (
-                      <Box key={filme} component="li" sx={styles.itemFilme}>
-                        <Typography sx={styles.textoFilme}>{filme}</Typography>
+                      <Box key={filme.slug} component="li" sx={styles.itemFilme}>
+                        <Button
+                          onClick={() => navigate(`/detalhes/${filme.slug}`, { viewTransition: true })}
+                          sx={styles.botaoFilme(filme.slug === slugAtivo)}
+                        >
+                          {filme.titulo}
+                        </Button>
                       </Box>
                     ))}
                   </Box>
@@ -69,7 +51,11 @@ export default function SideBar() {
           </Box>
 
           <Box sx={styles.rodape}>
-            <Button component={Link} to="/" startIcon={<Undo2 size={16} />} sx={styles.botaoVoltar}>
+            <Button
+              onClick={() => navigate("/", { viewTransition: true })}
+              startIcon={<Undo2 size={16} />}
+              sx={styles.botaoVoltar}
+            >
               Voltar
             </Button>
           </Box>
