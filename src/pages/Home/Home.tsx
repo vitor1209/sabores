@@ -98,7 +98,7 @@ export const Home = () => {
                 </Typography>
 
                 <Typography sx={AboutTxtLine}>
-                  Navegue pelas categorias de filmes — animação, romance, drama, comédia — e escolha o título que desperta a sua fome. Para cada filme, preparamos uma receita completa com ingredientes, modo de preparo e uma sinopse para relembrar a história.
+                  Navegue pelas categorias de filmes animação, romance, drama, comédia e escolha o título que desperta a sua fome. Para cada filme, preparamos uma receita completa com ingredientes, modo de preparo e uma sinopse para relembrar a história.
                 </Typography>
 
                 <Typography sx={AboutTxtLine}>

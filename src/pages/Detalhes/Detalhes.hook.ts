@@ -55,7 +55,7 @@ export const useDetalhes = () => {
                         return;
                     }
     
-                    setErroSinopse("Nao foi possivel carregar a sinopse online. Exibindo versao local.");
+                    setErroSinopse("Nao foi possivel carregar a sinopse.");
                     setSinopsesPorSlug((estadoAnterior) => ({
                         ...estadoAnterior,
                         [filmeEmDestaque.slug]: filmeEmDestaque.sinopse,
