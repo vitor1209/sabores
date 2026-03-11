@@ -1,5 +1,5 @@
 import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Drawer, Typography } from "@mui/material";
-import { ChevronDown, Heart, Popcorn, Undo2 } from "lucide-react";
+import { ChevronDown, Film, Popcorn, Undo2 } from "lucide-react";
 import { Outlet, useNavigate, useParams } from "react-router";
 import { categoriasComFilmesDetalhados, filmePadrao } from "../../models/ReceitasFilmes";
 import * as styles from "./Sidebar.styles";
@@ -27,7 +27,7 @@ export default function SideBar() {
               <Accordion key={categoria} disableGutters square elevation={0} sx={styles.acordeao}>
                 <AccordionSummary expandIcon={<ChevronDown size={16} />} sx={styles.resumoAcordeao}>
                   <Box sx={styles.categoriaTituloContainer}>
-                    <Heart size={16} strokeWidth={2} />
+                    <Film size={16} strokeWidth={2} />
                     <Typography sx={styles.categoriaTitulo}>{categoria}</Typography>
                   </Box>
                 </AccordionSummary>

@@ -60,10 +60,10 @@ export const appTheme = createTheme({
                     paddingInline: 16,
                 },
                 containedPrimary: {
-                    color: designSystem.cores.secundaria,
-                    backgroundColor: designSystem.cores.primaria,
+                    color: designSystem.cores.primaria,
+                    backgroundColor: designSystem.cores.secundaria,
                     "&:hover": {
-                        backgroundColor: "#6B0B13",
+                        backgroundColor: "#b3a978",
                     },
                 },
             },

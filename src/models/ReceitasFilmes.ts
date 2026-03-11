@@ -53,115 +53,117 @@ export const categoriasComFilmesDetalhados: CategoriaComFilmesDetalhado[] = [
         ],
     },
     {
-        categoria: "Comédia / Biografia",
+        categoria: "Comédia",
         filmes: [
             {
-                slug: "julie-and-julia",
-                titulo: "Julie & Julia",
-                nomeReceita: "Boeuf Bourguignon (estilo Julia Child)",
+                slug: "kung-fu-panda",
+                titulo: "Kung Fu Panda",
+                nomeReceita: "Macarrão Chinês do Sr. Ping",
                 sinopse:
-                    "Dois relatos entrelaçados: a famosa chef Julia Child aprendendo a cozinhar na França e Julie Powell tentando completar o desafio de fazer todas as receitas do livro de Julia. Um tributo à paciência e ao prazer da cozinha.",
+                    "Po é um panda desajeitado que trabalha no restaurante de macarrão de seu pai, mas sonha em se tornar um grande mestre de kung fu. Quando inesperadamente é escolhido como o Dragão Guerreiro, ele precisa treinar com os lendários Cinco Furiosos para salvar o Vale da Paz.",
                 receita: {
-                    tempoPreparo: "3h 30min (muito do tempo é cozimento lento)",
-                    porcoes: "Serve 6 pessoas",
+                    tempoPreparo: "25min",
+                    porcoes: "Serve 3 pessoas",
                     ingredientes: [
-                        "1 kg de acém ou músculo em cubos",
-                        "150 g de bacon em cubos",
-                        "2 colheres de sopa de óleo",
-                        "1 cebola grande picada",
-                        "2 cenouras em rodelas",
-                        "2 colheres de sopa de farinha de trigo",
-                        "750 ml de vinho tinto seco (Bourgogne ou similar)",
-                        "500 ml de caldo de carne",
-                        "2 colheres de sopa de extrato de tomate",
+                        "300 g de macarrão tipo yakisoba",
+                        "2 colheres de sopa de óleo de gergelim",
                         "2 dentes de alho picados",
-                        "1 bouquet garni (tomilho, louro, salsinha)",
-                        "150 g de cogumelos em quartos",
-                        "Sal e pimenta-do-reino a gosto",
+                        "1 cenoura em tiras finas",
+                        "1/2 pimentão em tiras",
+                        "1 xícara de repolho fatiado",
+                        "3 colheres de sopa de molho shoyu",
+                        "1 colher de sopa de molho de ostra",
+                        "1 colher de chá de açúcar",
+                        "Cebolinha picada para finalizar"
                     ],
                     modoPreparo: [
-                        "Tempere os cubos de carne com sal e pimenta. Seque-os com papel-toalha.",
-                        "Doure o bacon em uma panela grande e reserve. Na mesma panela, doure os cubos de carne em batches no óleo até formar uma crosta; reserve com o bacon.",
-                        "Refogue a cebola e a cenoura na panela até ficarem macias. Polvilhe a farinha e mexa por 1-2 minutos.",
-                        "Adicione o vinho tinto, raspando o fundo para soltar os sabores, depois acrescente o caldo e o extrato de tomate.",
-                        "Devolva a carne e o bacon para a panela, acrescente o bouquet garni e cozinhe em fogo baixo - ou no forno a 160°C - por 2,5 a 3 horas, até a carne ficar macia.",
-                        "Frite os cogumelos separadamente e junte nos últimos 15 minutos de cozimento.",
-                        "Ajuste sal e pimenta. Sirva com purê de batatas ou pão rústico.",
-                    ],
-                },
-            },
+                        "Cozinhe o macarrão conforme as instruções da embalagem e reserve.",
+                        "Aqueça o óleo de gergelim em uma panela ou wok.",
+                        "Refogue o alho rapidamente.",
+                        "Adicione a cenoura, o pimentão e o repolho e salteie por alguns minutos.",
+                        "Acrescente o macarrão cozido.",
+                        "Misture o molho shoyu, o molho de ostra e o açúcar.",
+                        "Mexa bem até o molho envolver todo o macarrão.",
+                        "Finalize com cebolinha e sirva quente."
+                    ]
+                }
+            }
         ],
     },
     {
-        categoria: "Drama / Cozinha Contemporânea",
+        categoria: "Drama",
         filmes: [
             {
-                slug: "chef",
-                titulo: "Chef",
-                nomeReceita: "Sanduíche Cubano do Chef Carl Casper",
+                slug: "the-godfather",
+                titulo: "O Poderoso Chefão",
+                nomeReceita: "Espaguete com Molho de Tomate Italiano",
                 sinopse:
-                    "Depois de perder o emprego num restaurante, um chef decide abrir um food truck e redescobrir sua paixão pela cozinha e pela família. A comida - simples e bem feita - é a alma do filme.",
+                    "A história da poderosa família mafiosa Corleone e da transformação de Michael Corleone em líder do império criminoso. Um dos filmes mais influentes da história do cinema.",
                 receita: {
                     tempoPreparo: "40min",
-                    porcoes: "Serve 4 sanduíches",
+                    porcoes: "Serve 4 pessoas",
                     ingredientes: [
-                        "8 fatias de pão cubano ou pão ciabatta pequeno",
-                        "400 g de lombo de porco assado, fatiado fino",
-                        "8 fatias de presunto",
-                        "8 fatias de queijo suíço",
-                        "Picles em fatias",
-                        "Mostarda amarela",
-                        "Manteiga para grelhar",
+                        "400 g de espaguete",
+                        "2 colheres de sopa de azeite",
+                        "2 dentes de alho picados",
+                        "1 lata de tomate pelado",
+                        "1 colher de chá de açúcar",
+                        "Sal e pimenta a gosto",
+                        "Folhas de manjericão",
+                        "Queijo parmesão ralado"
                     ],
                     modoPreparo: [
-                        "Passe mostarda nas metades internas do pão.",
-                        "Monte o sanduíche com lombo fatiado, presunto, queijo suíço e picles.",
-                        "Feche o sanduíche e passe manteiga nas faces externas.",
-                        "Aqueça uma chapa ou frigideira pesada; pressione o sanduíche (idealmente com uma prensa) e grelhe até o queijo derreter e o pão ficar dourado, cerca de 3-4 minutos por lado.",
-                        "Corte ao meio e sirva quente.",
-                    ],
-                },
-            },
+                        "Cozinhe o espaguete em água com sal.",
+                        "Refogue o alho no azeite.",
+                        "Adicione o tomate pelado e cozinhe por 15 minutos.",
+                        "Tempere com sal, pimenta e açúcar.",
+                        "Misture o molho ao espaguete e finalize com manjericão e parmesão."
+                    ]
+                }
+            }
         ],
     },
     {
-        categoria: "Romance / Doce",
+        categoria: "Romance",
         filmes: [
             {
-                slug: "chocolat",
-                titulo: "Chocolat",
-                nomeReceita: "Chocolate Quente Cremoso da Vianne",
+                slug: "lady-and-the-tramp",
+                titulo: "A Dama e o Vagabundo",
+                nomeReceita: "Espaguete com Almôndegas",
                 sinopse:
-                    "Em uma vila conservadora da França, Vianne abre uma loja de chocolates que transforma a comunidade com sabores e afeto. O filme celebra o poder do chocolate como conforto e provocação.",
+                    "Uma elegante cadela chamada Lady conhece um cachorro de rua chamado Vagabundo. Juntos vivem uma aventura romântica que inclui uma das cenas mais famosas do cinema: dividir um prato de espaguete.",
                 receita: {
-                    tempoPreparo: "20min",
-                    porcoes: "Serve 4 xícaras",
+                    tempoPreparo: "50min",
+                    porcoes: "Serve 4 pessoas",
                     ingredientes: [
-                        "500 ml de leite integral",
-                        "100 g de chocolate amargo (60-70%) picado",
-                        "2 colheres de sopa de cacau em pó",
-                        "1 colher de sopa de açúcar (ajustar a gosto)",
-                        "1/2 colher de chá de extrato de baunilha",
-                        "Uma pitada de canela (opcional)",
-                        "Chantilly ou raspas de chocolate para finalizar (opcional)",
+                        "400 g de espaguete",
+                        "300 g de carne moída",
+                        "1 ovo",
+                        "2 colheres de sopa de farinha de rosca",
+                        "1 dente de alho picado",
+                        "1 lata de molho de tomate",
+                        "Sal e pimenta a gosto",
+                        "Queijo parmesão ralado"
                     ],
                     modoPreparo: [
-                        "Aqueça o leite em fogo médio sem deixar ferver.",
-                        "Adicione o chocolate picado e o cacau em pó, mexendo até derreter e homogeneizar.",
-                        "Acrescente o açúcar, a baunilha e a canela; cozinhe por 2-3 minutos até ficar cremoso.",
-                        "Sirva em canecas e finalize com chantilly ou raspas de chocolate, se desejar.",
-                    ],
-                },
-            },
+                        "Misture a carne moída, ovo, alho e farinha de rosca.",
+                        "Modele pequenas almôndegas.",
+                        "Frite ou asse as almôndegas até dourar.",
+                        "Aqueça o molho de tomate e adicione as almôndegas.",
+                        "Cozinhe o espaguete e misture ao molho.",
+                        "Finalize com queijo parmesão."
+                    ]
+                }
+            }
         ],
     },
     {
-        categoria: "Aventura / Tropical",
+        categoria: "Aventura",
         filmes: [
             {
                 slug: "pirates-of-the-caribbean",
-                titulo: "Pirates of the Caribbean",
-                nomeReceita: "Rum Punch Caribenho (estilo dos sete mares)",
+                titulo: "Piratas do Caribe",
+                nomeReceita: "Rum Punch Caribenho",
                 sinopse:
                     "Piratas, marés e rum: a franquia traz o clima dos mares tropicais - perfeito para um coquetel clássico de piratas (versão sem álcool também possível).",
                 receita: {

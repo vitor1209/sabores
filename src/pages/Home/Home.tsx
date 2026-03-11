@@ -14,7 +14,6 @@ import {
   HeroTitle,
   SecaoSecundaria,
 } from "./Home.styles";
-import { Popcorn } from "lucide-react";
 import { filmeComida, pipoca } from "../../assets";
 import { Link } from "react-router";
 
@@ -24,8 +23,6 @@ export const Home = () => {
       <Stack>
 
         <Stack sx={HeaderImg}>
-          <Popcorn strokeWidth={1.5} />
-
           <Typography component="h1" sx={HeroTitle}>
             Além da Pipoca
           </Typography>
@@ -36,6 +33,7 @@ export const Home = () => {
           </Typography>
 
           <Button variant="contained"
+            size="large"
             component={Link}
             to="/detalhes">
             Conheça Mais
@@ -108,6 +106,7 @@ export const Home = () => {
                 </Typography>
 
                 <Button variant="contained"
+                  sx={{ bgcolor: 'primary.main', color: 'secondary.main', "&:hover": { bgcolor: "rgb(92, 11, 18)" } }}
                   component={Link}
                   to="/detalhes">
                   Explorar Receitas
@@ -119,7 +118,6 @@ export const Home = () => {
         </Stack>
 
         <Stack sx={FooterStack}>
-          <Popcorn strokeWidth={1.5} />
 
           <Typography sx={FooterTitle}>
             Além da Pipoca

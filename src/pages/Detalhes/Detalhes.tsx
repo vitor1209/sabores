@@ -1,12 +1,8 @@
-import { Box, Stack, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Skeleton, Stack, Tab, Tabs, Typography } from "@mui/material";
 import { Clock3, Users } from "lucide-react";
-import { type SyntheticEvent, useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { useObterFilme as obterFilme } from "../../controllers/Detalhes";
-import { filmePadrao, obterFilmePorSlug } from "../../models/ReceitasFilmes";
 import * as styles from "./Detalhes.styles";
-
-type AbaDetalhes = "receita" | "sinopse";
+import { useDetalhes } from "./Detalhes.hook";
+import type { AbaDetalhes } from "./Detalhes.types";
 
 const indicePorAba: Record<AbaDetalhes, number> = {
     receita: 0,
@@ -14,74 +10,8 @@ const indicePorAba: Record<AbaDetalhes, number> = {
 };
 
 export const Detalhes = () => {
-    const [abaAtiva, setAbaAtiva] = useState<AbaDetalhes>("receita");
-    const [sinopsesPorSlug, setSinopsesPorSlug] = useState<Record<string, string>>({});
-    const [carregandoSinopse, setCarregandoSinopse] = useState(false);
-    const [erroSinopse, setErroSinopse] = useState<string | null>(null);
-    const { filmeSlug } = useParams();
 
-    const filmeEmDestaque = obterFilmePorSlug(filmeSlug) ?? filmePadrao;
-    const sinopseDaApi = sinopsesPorSlug[filmeEmDestaque.slug];
-    const sinopseExibida = sinopseDaApi ?? filmeEmDestaque.sinopse;
-
-    const aoTrocarAba = (_event: SyntheticEvent, novoIndice: number) => {
-        setAbaAtiva(novoIndice === 0 ? "receita" : "sinopse");
-    };
-
-    useEffect(() => {
-        let estaAtivo = true;
-
-        if (abaAtiva !== "sinopse" || sinopseDaApi) {
-            return () => {
-                estaAtivo = false;
-            };
-        }
-
-        const carregarSinopse = async () => {
-            setErroSinopse(null);
-            setCarregandoSinopse(true);
-
-            try {
-                const resposta = await obterFilme({ name: filmeEmDestaque.titulo });
-
-                if (!estaAtivo) {
-                    return;
-                }
-
-                const filmeDaBusca =
-                    resposta.results.find(
-                        (filme) => filme.title.toLowerCase() === filmeEmDestaque.titulo.toLowerCase()
-                    ) ?? resposta.results[0];
-
-                const sinopseRetornada = filmeDaBusca?.overview?.trim();
-
-                setSinopsesPorSlug((estadoAnterior) => ({
-                    ...estadoAnterior,
-                    [filmeEmDestaque.slug]: sinopseRetornada || filmeEmDestaque.sinopse,
-                }));
-            } catch {
-                if (!estaAtivo) {
-                    return;
-                }
-
-                setErroSinopse("Nao foi possivel carregar a sinopse online. Exibindo versao local.");
-                setSinopsesPorSlug((estadoAnterior) => ({
-                    ...estadoAnterior,
-                    [filmeEmDestaque.slug]: filmeEmDestaque.sinopse,
-                }));
-            } finally {
-                if (estaAtivo) {
-                    setCarregandoSinopse(false);
-                }
-            }
-        };
-
-        void carregarSinopse();
-
-        return () => {
-            estaAtivo = false;
-        };
-    }, [abaAtiva, filmeEmDestaque.sinopse, filmeEmDestaque.slug, filmeEmDestaque.titulo, sinopseDaApi]);
+    const { abaAtiva, erroSinopse, filmeEmDestaque, aoTrocarAba, carregandoSinopse, sinopseExibida } = useDetalhes();
 
     return (
         <Stack sx={styles.container}>
@@ -164,8 +94,11 @@ export const Detalhes = () => {
                         </Typography>
 
                         {carregandoSinopse && (
-                            <Typography sx={styles.textoMetadado}>Carregando sinopse do TMDB...</Typography>
-                        )}
+                            <>
+                                <Skeleton variant="text" sx={{ fontSize: "1rem", width: "100%" }} />
+                                <Skeleton variant="text" sx={{ fontSize: "1rem", width: "95%" }} />
+                                <Skeleton variant="text" sx={{ fontSize: "1rem", width: "90%" }} />
+                            </>)}
 
                         {erroSinopse && <Typography sx={styles.textoMetadado}>{erroSinopse}</Typography>}
 

@@ -74,7 +74,7 @@ export const FooterStack: SxProps = {
   backgroundColor: "primary.main",
   alignItems: "center",
   textAlign: "center",
-  gap: 1,
+  gap: 1, 
   p: { xs: "9% 0", md: "3.2% 0" },
 };
 

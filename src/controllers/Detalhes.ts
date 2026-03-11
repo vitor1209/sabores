@@ -3,7 +3,7 @@ import type { MovieRequest, MovieResponse } from "../models/Detalhes.types";
 
 const apiKeyPadrao = import.meta.env.VITE_TMDB_API_KEY;
 
-export const useObterFilme = async (request: MovieRequest): Promise<MovieResponse> => {
+export const obterFilme = async (request: MovieRequest): Promise<MovieResponse> => {
     const apiKey = request.apiKey ?? apiKeyPadrao;
 
     if (!apiKey) {
